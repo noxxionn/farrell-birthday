@@ -1,0 +1,2179 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0b2a4a">
+    <title>Happy Birthday Farrell ♡</title>
+
+    <!-- GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- CSS GABUNGAN & TAMBAHAN TERBARU -->
+    <style>
+        /* ================================
+            LOADING SCREEN STYLES
+        ================================ */
+        #loading-screen {
+            position: fixed;
+            inset: 0;
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: radial-gradient(
+                circle at center,
+                #102a4c 0%,
+                #07182d 45%,
+                #020914 100%
+            );
+            transition: opacity 1s ease, visibility 1s ease;
+        }
+
+        .loading-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            animation: loadingFadeIn 1.2s ease;
+        }
+
+        .loading-gif {
+            width: 150px;
+            height: 150px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .loading-gif .tenor-gif-embed {
+            width: 150px !important;
+            max-width: 150px !important;
+        }
+
+        .loading-text {
+            color: rgba(255, 255, 255, 0.85);
+            font-family: Georgia, "Times New Roman", serif;
+            font-size: 22px;
+            letter-spacing: 2px;
+            margin: 0;
+        }
+
+        .loading-dots {
+            display: inline-block;
+            width: 28px;
+            text-align: left;
+        }
+
+        .loading-dots::after {
+            content: "";
+            animation: dots 1.5s infinite;
+        }
+
+        .loading-subtitle {
+            margin-top: 12px;
+            font-family: Arial, sans-serif;
+            font-size: 11px;
+            letter-spacing: 3px;
+            color: rgba(150, 190, 230, 0.55);
+            text-transform: uppercase;
+        }
+
+        @keyframes loadingFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes dots {
+            0% { content: ""; }
+            25% { content: "."; }
+            50% { content: ".."; }
+            75% { content: "..."; }
+            100% { content: ""; }
+        }
+
+        #loading-screen.hide {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        /* ================================
+            MAIN APP & TOGGLE STYLES
+        ================================ */
+        * {
+            box-sizing: border-box;
+        }
+
+        html, body {
+            margin: 0;
+            min-height: 100%;
+        }
+
+        body {
+            font-family: 'DM Sans', Georgia, 'Times New Roman', serif;
+            background: #020817;
+            color: #f5faff;
+        }
+
+        #app {
+            min-height: 100vh;
+            display: grid;
+            place-items: center;
+            overflow: hidden;
+            position: relative;
+            background: radial-gradient(
+                circle at 50% 42%,
+                #071d45 0%,
+                #041027 38%,
+                #01040d 78%
+            );
+        }
+
+        .glow {
+            position: absolute;
+            width: 560px;
+            height: 560px;
+            border-radius: 50%;
+            background: #1677ff;
+            filter: blur(150px);
+            opacity: .08;
+            transition: .7s ease;
+        }
+
+        .glow.on {
+            opacity: .24;
+            transform: scale(1.15);
+        }
+
+        /* LOVE MODE CARD */
+        .card {
+            position: relative;
+            z-index: 2;
+            width: min(500px, calc(100% - 36px));
+            min-height: 555px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 36px;
+            border: 1px solid rgba(130,190,255,.18);
+            border-radius: 68px;
+            background: rgba(8, 24, 52, .68);
+            box-shadow: 0 35px 100px rgba(0,0,0,.42), inset 0 1px rgba(255,255,255,.025);
+            backdrop-filter: blur(18px);
+            transition: .7s ease;
+        }
+
+        .card.on {
+            border-color: rgba(70,155,255,.34);
+            background: rgba(8, 31, 70, .72);
+            box-shadow: 0 35px 110px rgba(20,110,255,.15), inset 0 1px rgba(255,255,255,.035);
+        }
+
+        .heart {
+            width: 112px;
+            height: 112px;
+            display: grid;
+            place-items: center;
+            margin-bottom: 52px;
+            color: #536f91;
+            font-size: 112px;
+            line-height: 1;
+            font-family: Arial, sans-serif;
+            transition: .55s ease;
+        }
+
+        .card.on .heart {
+            color: #3f9cff;
+            text-shadow: 0 0 24px rgba(63,156,255,.6), 0 0 55px rgba(63,156,255,.28);
+            transform: scale(1.04);
+        }
+
+        .card h1-title {
+            margin: 0 0 44px;
+            font-size: clamp(48px, 8vw, 72px);
+            line-height: 1;
+            font-weight: 400;
+            letter-spacing: -.055em;
+            text-align: center;
+            color: #718eaa;
+            transition: .55s ease;
+        }
+
+        .card.on h1-title {
+            color: #f5faff;
+        }
+
+        /* TOGGLE BUTTON */
+        .toggle {
+            width: 192px;
+            height: 76px;
+            padding: 7px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border: 0;
+            border-radius: 999px;
+            background: #293a55;
+            cursor: pointer;
+            box-shadow: inset 0 0 0 1px rgba(255,255,255,.025);
+            transition: .45s ease;
+        }
+
+        .toggle.on {
+            background: #1677ff;
+            box-shadow: 0 12px 38px rgba(22,119,255,.3);
+        }
+
+        .label {
+            width: 86px;
+            color: #8394ad;
+            font: 700 14px Arial, sans-serif;
+            letter-spacing: .13em;
+            text-align: center;
+            transition: .4s ease;
+        }
+
+        .toggle.on .label {
+            color: white;
+        }
+
+        .knob {
+            width: 62px;
+            height: 62px;
+            display: grid;
+            place-items: center;
+            flex: 0 0 62px;
+            border-radius: 50%;
+            background: #fff;
+            color: #c9d6e8;
+            font: 38px/1 Arial, sans-serif;
+            box-shadow: 0 3px 12px rgba(0,0,0,.12);
+            transition: .45s cubic-bezier(.2,.8,.2,1);
+        }
+
+        .toggle.on .knob {
+            color: #1677ff;
+            transform: translateX(-116px);
+        }
+
+        /* PASSWORD CARD */
+        .password {
+            position: absolute;
+            z-index: 5;
+            width: min(520px, calc(100% - 36px));
+            min-height: 590px;
+            padding: 42px 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            border: 1px solid rgba(130,190,255,.2);
+            border-radius: 38px;
+            background: rgba(4, 19, 45, .94);
+            box-shadow: 0 35px 120px rgba(20,110,255,.18), inset 0 1px rgba(255,255,255,.05);
+            backdrop-filter: blur(22px);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(30px) scale(.94);
+            transition: .65s cubic-bezier(.2,.8,.2,1);
+        }
+
+        .password.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0) scale(1);
+        }
+
+        .lock {
+            font: 34px/1 Arial, sans-serif;
+            color: #69b2ff;
+            margin-bottom: 18px;
+            text-shadow: 0 0 22px rgba(63,156,255,.45);
+        }
+
+        .password h3 {
+            margin: 0 0 28px;
+            color: #f5faff;
+            font-size: clamp(30px, 6vw, 46px);
+            font-weight: 400;
+            letter-spacing: -.045em;
+        }
+
+        .pin-display {
+            display: flex;
+            gap: 13px;
+            margin-bottom: 30px;
+        }
+
+        .pin-dot {
+            width: 13px;
+            height: 13px;
+            border-radius: 50%;
+            border: 1px solid #55799f;
+            background: transparent;
+            transition: .18s ease;
+        }
+
+        .pin-dot.filled {
+            background: #69b2ff;
+            border-color: #69b2ff;
+            box-shadow: 0 0 14px rgba(74,165,255,.65);
+        }
+
+        .keypad {
+            width: min(330px, 100%);
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        .key {
+            height: 64px;
+            border: 1px solid rgba(130,190,255,.12);
+            border-radius: 17px;
+            background: rgba(91,126,170,.12);
+            color: #dbeaff;
+            font: 400 21px Arial, sans-serif;
+            cursor: pointer;
+            transition: .18s ease;
+            box-shadow: inset 0 1px rgba(255,255,255,.025);
+        }
+
+        .key:hover {
+            background: rgba(74,165,255,.16);
+            border-color: rgba(105,178,255,.28);
+            transform: translateY(-2px);
+        }
+
+        .key:active {
+            transform: scale(.94);
+            background: rgba(74,165,255,.25);
+            box-shadow: 0 0 20px rgba(74,165,255,.12);
+        }
+
+        .key.action {
+            color: #91b9e5;
+            font-size: 22px;
+        }
+
+        .error {
+            min-height: 20px;
+            margin-top: 16px;
+            color: #69b2ff;
+            font: 12px Arial, sans-serif;
+        }
+
+        /* =====================================================
+            FULL BIRTHDAY CONTENT STYLING
+        ===================================================== */
+        #mainContentWrapper {
+            position: absolute;
+            inset: 0;
+            overflow-y: auto;
+            z-index: 10;
+            opacity: 0;
+            visibility: hidden;
+            background: #020817;
+            color: #e8f3ff;
+            transition: opacity 0.8s ease;
+        }
+
+        #mainContentWrapper.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* FLOATING FLOWERS */
+        #petals {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 1;
+        }
+        .petal {
+            position: absolute;
+            top: -10vh;
+            opacity: 0.7;
+            animation: fall linear infinite;
+        }
+        @keyframes fall {
+            0% { transform: translateY(-10vh) translateX(0) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.9; }
+            90% { opacity: 0.9; }
+            100% { transform: translateY(110vh) translateX(var(--x, 0px)) rotate(360deg); opacity: 0; }
+        }
+
+        /* MUSIC BUTTON */
+        .music-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 100;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #fff;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            font-size: 18px;
+            cursor: pointer;
+            backdrop-filter: blur(5px);
+            transition: 0.3s;
+        }
+        .music-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.05);
+        }
+
+        /* SECTIONS */
+        .section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .eyebrow {
+            font-size: 12px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: #69b2ff;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(40px, 7vw, 75px);
+            line-height: 1.1;
+            margin: 0 0 20px;
+            font-weight: 500;
+        }
+        .hero h1 em {
+            font-style: italic;
+            color: #8fc8ff;
+        }
+        .hero h1 span {
+            color: #a8d8ff;
+            font-weight: 600;
+        }
+
+        .hero-love {
+            margin-top: 35px;
+            font-family: "Cormorant Garamond", serif;
+            font-style: italic;
+            font-size: 28px;
+            color: #9dccff;
+        }
+
+        .date {
+            font-size: 11px;
+            letter-spacing: 3px;
+            color: #6d8fb5;
+            text-transform: uppercase;
+            margin-top: 20px;
+        }
+        .scroll-hint {
+            position: absolute;
+            bottom: 30px;
+            font-size: 12px;
+            letter-spacing: 2px;
+            color: #7da2cc;
+            animation: bounce 2s infinite;
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+
+        /* BOUQUET SECTION */
+        .bouquet-section h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(35px, 5vw, 55px);
+            margin: 0 0 10px;
+            font-weight: 500;
+        }
+        .sub {
+            color: #9db8d6;
+            font-size: 14px;
+            margin-bottom: 40px;
+        }
+        .bouquet {
+            position: relative;
+            width: 280px;
+            height: 320px;
+            margin: 0 auto;
+        }
+        .flower {
+            position: absolute;
+            background: none;
+            border: none;
+            font-size: 36px;
+            cursor: pointer;
+            transition: transform 0.3s;
+            filter: drop-shadow(0 5px 10px rgba(0,0,0,0.3));
+        }
+        .flower:hover {
+            transform: scale(1.2) rotate(10deg);
+        }
+        .f1 { top: 20px; left: 120px; }
+        .f2 { top: 60px; left: 40px; }
+        .f3 { top: 60px; right: 40px; }
+        .f4 { top: 130px; left: 20px; }
+        .f5 { top: 130px; right: 20px; }
+        .f6 { top: 180px; left: 120px; }
+
+        .stems {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #527da8;
+            font-family: monospace;
+            line-height: 1.2;
+            text-align: center;
+        }
+        .bouquet-wrap {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 60px;
+            background: #12365c;
+            border-radius: 0 0 60px 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #69b2ff;
+            border: 1px solid rgba(105,178,255,0.3);
+        }
+
+        .touch-hint {
+            margin-top: 10px;
+            color: #8eafd2;
+            font-size: 13px;
+            letter-spacing: 0.03em;
+        }
+
+        .message-pop {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.9);
+            background: #0a2440;
+            border: 1px solid rgba(105,178,255,0.4);
+            padding: 30px;
+            border-radius: 20px;
+            max-width: 320px;
+            width: 90%;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+            opacity: 0;
+            visibility: hidden;
+            transition: 0.3s;
+            z-index: 1000;
+            text-align: center;
+        }
+        .message-pop.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translate(-50%, -50%) scale(1);
+        }
+        .close-pop {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        /* LETTER SECTION */
+        .letter-section {
+            background: #031226;
+        }
+        .letter {
+            background: #071c35;
+            border: 1px solid rgba(105,178,255,0.2);
+            padding: 40px 30px;
+            border-radius: 12px;
+            max-width: 600px;
+            width: 100%;
+            text-align: left;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 20px;
+            line-height: 1.8;
+            color: #dcecff;
+        }
+        .letter-date {
+            font-size: 14px;
+            color: #9db8d6;
+            margin-bottom: 20px;
+            font-family: 'DM Sans', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .letter h3 {
+            margin: 0 0 20px;
+            font-size: 28px;
+            color: #a8d8ff;
+        }
+        .letter p {
+            margin: 0 0 20px;
+        }
+        .letter .script {
+            font-style: italic;
+            color: #8fc8ff;
+        }
+        .signature {
+            margin-top: 30px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 15px;
+            color: #9ebddd;
+        }
+
+        /* JAR SECTION */
+        .jar-section h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(35px, 5vw, 55px);
+            margin: 0 0 10px;
+        }
+        /* GRATITUDE JAR — blue version, shaped like the reference */
+        .jar {
+            width: 264px;
+            height: 458px;
+            border: 3px solid rgba(105,178,255,0.82);
+            border-radius: 38px 38px 68px 68px;
+            position: relative;
+            margin: 58px auto 30px;
+            background:
+                linear-gradient(180deg, rgba(105,178,255,0.10), rgba(105,178,255,0.045)),
+                rgba(255,255,255,0.025);
+            box-shadow:
+                inset 0 0 35px rgba(105,178,255,0.08),
+                0 0 28px rgba(57,127,189,0.10);
+            display: block;
+            overflow: visible;
+        }
+
+        .jar::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            background: radial-gradient(circle at 50% 20%, rgba(143,200,255,0.05), transparent 48%);
+            pointer-events: none;
+        }
+
+        .jar.shake {
+            animation: jarShake 0.5s ease;
+        }
+
+        @keyframes jarShake {
+            0% { transform: rotate(0deg); }
+            20% { transform: rotate(-4deg); }
+            40% { transform: rotate(4deg); }
+            60% { transform: rotate(-4deg); }
+            80% { transform: rotate(4deg); }
+            100% { transform: rotate(0deg); }
+        }
+
+        .jar-lid {
+            position: absolute;
+            z-index: 3;
+            top: -53px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 210px;
+            height: 62px;
+            background: linear-gradient(180deg, #4d96d6, #397fbd);
+            border: 3px solid #69b2ff;
+            border-radius: 21px;
+            box-shadow:
+                0 4px 14px rgba(57,127,189,0.22),
+                inset 0 1px 0 rgba(255,255,255,0.18);
+        }
+
+        .notes {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            border-radius: inherit;
+        }
+
+        .notes i {
+            position: absolute;
+            display: block;
+            width: 62px;
+            height: 38px;
+            background: #8fc8ff;
+            border-radius: 6px;
+            box-shadow: 0 5px 12px rgba(0,0,0,0.12);
+        }
+
+        .notes i:nth-child(1) {
+            top: 92px;
+            left: 62px;
+            transform: rotate(12deg);
+        }
+
+        .notes i:nth-child(2) {
+            top: 181px;
+            right: 47px;
+            width: 68px;
+            height: 40px;
+            transform: rotate(-10deg);
+        }
+
+        .notes i:nth-child(3) {
+            top: 214px;
+            left: 104px;
+            width: 65px;
+            height: 39px;
+            transform: rotate(18deg);
+        }
+
+        .notes i:nth-child(4) {
+            top: 271px;
+            left: 75px;
+            width: 68px;
+            height: 40px;
+            transform: rotate(6deg);
+        }
+
+        .notes i:nth-child(5) {
+            top: 354px;
+            right: 72px;
+            width: 66px;
+            height: 40px;
+            transform: rotate(-9deg);
+        }
+
+        .primary {
+            background: #397fbd;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 14px;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 5px 15px rgba(57,127,189,0.4);
+        }
+        .primary:hover {
+            background: #4d96d6;
+            transform: translateY(-2px);
+        }
+        /* NOTE RESULT — styled like the reference card, but in the blue palette */
+        .note-result {
+            margin: 42px auto 0;
+            width: min(92%, 930px);
+            min-height: 105px;
+            box-sizing: border-box;
+            padding: 38px 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(24px, 3vw, 38px);
+            line-height: 1.3;
+            font-style: normal;
+            font-weight: 500;
+            color: #315a7f;
+            background: #f5faff;
+            border: 2px solid rgba(105,178,255,0.22);
+            border-radius: 11px;
+            box-shadow: 0 12px 30px rgba(0, 20, 45, 0.18);
+            transition: opacity 0.25s ease, transform 0.25s ease;
+        }
+
+        @media (max-width: 600px) {
+            .note-result {
+                width: 92%;
+                min-height: 90px;
+                padding: 28px 22px;
+                font-size: 25px;
+            }
+        }
+
+        /* 10 THINGS I LOVE ABOUT YOU */
+        .things-section {
+            justify-content: flex-start;
+            padding-top: 120px;
+            background: #031226;
+        }
+
+        .things-list {
+            width: min(780px, 100%);
+            margin-top: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            text-align: left;
+        }
+
+        .thing {
+            display: grid;
+            grid-template-columns: 70px 1fr;
+            align-items: start;
+            gap: 20px;
+            padding: 25px 28px;
+            border: 1px solid rgba(130,190,255,0.18);
+            border-radius: 20px;
+            background: rgba(130,190,255,0.055);
+            transition: transform 0.3s ease, background 0.3s ease, border-color 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .thing:hover {
+            transform: translateX(7px);
+            background: rgba(130,190,255,0.1);
+            border-color: rgba(130,190,255,0.35);
+        }
+
+        .thing-number {
+            font-family: "Cormorant Garamond", serif;
+            font-size: 28px;
+            color: #6faeff;
+            line-height: 1;
+        }
+
+        .thing-content h3 {
+            margin: 0 0 5px;
+            color: #e7f3ff;
+            font-size: 28px;
+        }
+
+        .thing-content p {
+            margin: 0;
+            color: #a8c0dc;
+            line-height: 1.7;
+            font-size: 14px;
+        }
+
+        /* MOBILE - 10 THINGS */
+        @media (max-width: 600px) {
+            .thing {
+                grid-template-columns: 45px 1fr;
+                gap: 10px;
+                padding: 22px 18px;
+            }
+
+            .thing-number {
+                font-size: 23px;
+            }
+
+            .thing-content h3 {
+                font-size: 24px;
+            }
+
+            .thing-content p {
+                font-size: 13px;
+            }
+
+            .hero-love {
+                font-size: 23px;
+            }
+        }
+    
+        /* =====================================================
+           PHOTO MEMORIES — BLUE POLAROID SLIDER
+        ===================================================== */
+        .memories-section {
+            background: #031226;
+            background-image: radial-gradient(rgba(130, 190, 255, 0.08) 1px, transparent 1px);
+            background-size: 30px 30px;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .memories-section h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(35px, 5vw, 55px);
+            margin: 0 0 10px;
+            font-weight: 500;
+            color: #f5faff;
+        }
+
+        .polaroid-slider-container {
+            width: 100%;
+            max-width: 1100px;
+            overflow-x: auto;
+            padding: 30px 20px 50px 20px;
+            scrollbar-width: thin;
+            scrollbar-color: rgba(105, 178, 255, 0.5) transparent;
+        }
+
+        .polaroid-slider-container::-webkit-scrollbar {
+            height: 8px;
+        }
+
+        .polaroid-slider-container::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 10px;
+        }
+
+        .polaroid-slider-container::-webkit-scrollbar-thumb {
+            background: rgba(105, 178, 255, 0.5);
+            border-radius: 10px;
+        }
+
+        .polaroid-track {
+            display: flex;
+            gap: 30px;
+            width: max-content;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        .polaroid {
+            background: #eaf4ff;
+            padding: 16px 16px 20px 16px;
+            width: 260px;
+            flex: 0 0 260px;
+            border-radius: 4px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+            transform: rotate(-2deg);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .polaroid:nth-child(even) {
+            transform: rotate(2deg);
+        }
+
+        .polaroid:nth-child(3n) {
+            transform: rotate(-1deg);
+        }
+
+        .polaroid:hover {
+            transform: translateY(-8px) rotate(0deg) scale(1.02);
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6);
+            z-index: 10;
+        }
+
+        .polaroid-inner {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .photo-placeholder {
+            width: 100%;
+            height: 240px;
+            background: #cfe5ff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 18px;
+            border-radius: 2px;
+        }
+
+.photo-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+        .photo-icon {
+            font-size: 34px;
+        }
+
+        .photo-text {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 13px;
+            color: #456b95;
+            letter-spacing: 0.05em;
+        }
+
+        .polaroid-caption {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-size: 17px;
+            color: #173657;
+            margin: 0;
+            text-align: center;
+        }
+
+
+        /* =====================================================
+           MUSIC PLAYLIST — BLUE PLAYER
+        ===================================================== */
+        .playlist-section {
+            background:
+                radial-gradient(circle at 50% 0%, rgba(57,127,189,0.18), transparent 38%),
+                #020b1b;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .playlist-section h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(35px, 5vw, 55px);
+            margin: 0 0 10px;
+            font-weight: 500;
+            color: #f5faff;
+            text-align: center;
+        }
+
+        .playlist-section > .eyebrow,
+        .playlist-section > .sub {
+            text-align: center;
+        }
+
+        .playlist-player {
+            width: min(680px, calc(100% - 32px));
+            margin: 28px auto 24px;
+            padding: 34px 30px 28px;
+            border: 1px solid rgba(105,178,255,0.28);
+            border-radius: 28px;
+            background: linear-gradient(180deg, rgba(15,49,87,0.88), rgba(5,20,40,0.94));
+            box-shadow: 0 18px 50px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.06);
+            backdrop-filter: blur(10px);
+        }
+
+        .album-art {
+            width: 190px;
+            height: 190px;
+            margin: 0 auto 25px;
+            border-radius: 50%;
+            position: relative;
+            display: grid;
+            place-items: center;
+            overflow: hidden;
+            background:
+                radial-gradient(circle at 50% 50%, #a8d8ff 0 7%, #397fbd 8% 10%, transparent 11%),
+                radial-gradient(circle at 50% 50%, #163f68 0 34%, #0c2948 35% 58%, #071a31 59% 100%);
+            border: 3px solid rgba(143,200,255,0.72);
+            box-shadow: 0 0 34px rgba(57,127,189,0.25);
+        }
+
+        .album-art::before,
+        .album-art::after {
+            content: "";
+            position: absolute;
+            border: 1px solid rgba(168,216,255,0.18);
+            border-radius: 50%;
+            inset: 20px;
+        }
+
+        .album-art::after {
+            inset: 42px;
+        }
+
+        .album-disc {
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #dcecff;
+            box-shadow: 0 0 12px rgba(220,236,255,0.7);
+            z-index: 2;
+        }
+
+        .album-symbol {
+            position: relative;
+            z-index: 2;
+            margin-top: -2px;
+            font-size: 46px;
+            color: #a8d8ff;
+            text-shadow: 0 0 18px rgba(168,216,255,0.5);
+        }
+
+        .playlist-player.playing .album-art {
+            animation: albumSpin 7s linear infinite;
+        }
+
+        @keyframes albumSpin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .now-playing {
+            text-align: center;
+            margin-bottom: 22px;
+        }
+
+        .now-playing h3 {
+            margin: 0 0 5px;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(27px, 4vw, 36px);
+            font-weight: 500;
+            color: #e7f3ff;
+        }
+
+        .now-playing p {
+            margin: 0;
+            color: #89acd0;
+            font-size: 14px;
+        }
+
+        .progress-area {
+            margin: 0 auto 20px;
+            max-width: 560px;
+        }
+
+        #playlistProgress {
+            width: 100%;
+            height: 5px;
+            appearance: none;
+            -webkit-appearance: none;
+            border-radius: 10px;
+            background: rgba(143,200,255,0.18);
+            cursor: pointer;
+            accent-color: #69b2ff;
+        }
+
+        #playlistProgress::-webkit-slider-thumb {
+            appearance: none;
+            -webkit-appearance: none;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #8fc8ff;
+            box-shadow: 0 0 10px rgba(105,178,255,0.55);
+        }
+
+        .time-row {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 7px;
+            color: #718eaa;
+            font-size: 12px;
+        }
+
+        .playlist-controls {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 38px;
+        }
+
+        .playlist-control,
+        .playlist-play {
+            border: 0;
+            color: #dcecff;
+            cursor: pointer;
+            transition: transform 0.2s ease, background 0.2s ease;
+        }
+
+        .playlist-control {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            background: rgba(105,178,255,0.12);
+            font-size: 21px;
+        }
+
+        .playlist-play {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: linear-gradient(145deg, #4d96d6, #27689f);
+            border: 2px solid rgba(168,216,255,0.42);
+            box-shadow: 0 8px 22px rgba(39,104,159,0.32);
+            font-size: 25px;
+            padding-left: 3px;
+        }
+
+        .playlist-control:hover,
+        .playlist-play:hover {
+            transform: scale(1.07);
+        }
+
+        .song-list {
+            width: min(680px, calc(100% - 32px));
+            margin: 0 auto;
+            display: grid;
+            gap: 10px;
+        }
+
+        .song {
+            width: 100%;
+            display: grid;
+            grid-template-columns: 46px 1fr 38px;
+            align-items: center;
+            gap: 10px;
+            padding: 17px 18px;
+            border: 1px solid rgba(105,178,255,0.16);
+            border-radius: 18px;
+            background: rgba(105,178,255,0.055);
+            color: #e7f3ff;
+            text-align: left;
+            cursor: pointer;
+            transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+        }
+
+        .song:hover,
+        .song.active {
+            background: rgba(105,178,255,0.12);
+            border-color: rgba(105,178,255,0.4);
+            transform: translateY(-2px);
+        }
+
+        .song-number {
+            color: #6faeff;
+            font-size: 14px;
+            text-align: center;
+        }
+
+        .song-info {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .song-info strong {
+            font-size: 16px;
+            font-weight: 500;
+            color: #e7f3ff;
+        }
+
+        .song-info small {
+            color: #718eaa;
+            font-size: 12px;
+        }
+
+        .song-mark {
+            color: #8fc8ff;
+            text-align: center;
+            font-size: 19px;
+        }
+
+        .playlist-note {
+            width: min(680px, calc(100% - 32px));
+            margin: 18px auto 0;
+            text-align: center;
+            color: #718eaa;
+            font-size: 11px;
+            line-height: 1.6;
+        }
+
+        .playlist-note code {
+            color: #9dccff;
+        }
+
+        @media (max-width: 600px) {
+            .playlist-player {
+                padding: 28px 18px 24px;
+                border-radius: 22px;
+            }
+
+            .album-art {
+                width: 160px;
+                height: 160px;
+            }
+
+            .playlist-controls {
+                gap: 25px;
+            }
+
+            .playlist-play {
+                width: 64px;
+                height: 64px;
+            }
+
+            .song {
+                grid-template-columns: 34px 1fr 28px;
+                padding: 15px 13px;
+            }
+        }
+
+</style>
+<style>
+
+/* =====================================================
+   FINAL WISH / ENDING SECTION — BLUE PALETTE
+===================================================== */
+.final-wish-section {
+    min-height: 100vh;
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    padding: 90px 24px;
+    background:
+        radial-gradient(circle at 50% 20%, rgba(105,178,255,0.12), transparent 32%),
+        #020817;
+}
+
+.final-wish-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.45;
+    background-image: radial-gradient(rgba(143,200,255,0.28) 1px, transparent 1px);
+    background-size: 32px 32px;
+}
+
+.final-wish-content {
+    position: relative;
+    z-index: 2;
+    width: min(100%, 1050px);
+}
+
+.final-wish-eyebrow {
+    margin: 0 0 34px;
+    color: #9fcfff;
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(12px, 1.6vw, 17px);
+    font-weight: 600;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+}
+
+.final-wish-title {
+    margin: 0 auto;
+    color: #f5faff;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(68px, 10vw, 142px);
+    line-height: 0.82;
+    font-weight: 500;
+    letter-spacing: -0.035em;
+}
+
+.final-wish-title em {
+    display: block;
+    color: #8fc8ff;
+    font-weight: 500;
+    font-style: italic;
+}
+
+.final-wish-title .wish-line {
+    display: block;
+}
+
+.final-wish-description {
+    max-width: 900px;
+    margin: 58px auto 0;
+    color: #b8cce2;
+    font-family: 'DM Sans', sans-serif;
+    font-size: clamp(16px, 2vw, 25px);
+    line-height: 1.75;
+}
+
+.final-wish-signature {
+    margin: 62px 0 0;
+    color: #9fcfff;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(24px, 3vw, 36px);
+    font-style: italic;
+}
+
+.final-wish-signature::before,
+.final-wish-signature::after {
+    content: "—";
+    display: inline-block;
+    margin: 0 14px;
+    color: #69b2ff;
+}
+
+.final-wish-heart {
+    display: inline-block;
+    margin-left: 7px;
+    color: #69b2ff;
+    font-style: normal;
+    text-shadow: 0 0 18px rgba(105,178,255,0.45);
+}
+
+@media (max-width: 600px) {
+    .final-wish-section {
+        min-height: 85vh;
+        padding: 70px 18px;
+    }
+
+    .final-wish-title {
+        font-size: clamp(55px, 16vw, 90px);
+        line-height: 0.88;
+    }
+
+    .final-wish-description {
+        margin-top: 42px;
+        font-size: 16px;
+        line-height: 1.65;
+    }
+
+    .final-wish-signature {
+        margin-top: 45px;
+    }
+
+    .final-wish-signature::before,
+    .final-wish-signature::after {
+        margin: 0 7px;
+    }
+}
+
+</style>
+</head>
+<body>
+
+    <!-- LOADING SCREEN -->
+    <div id="loading-screen">
+        <div class="loading-content">
+            <div class="loading-gif">
+                <div class="tenor-gif-embed" data-postid="15478685760485310159" data-share-method="host" data-aspect-ratio="1" data-width="100%">
+                    <a href="https://tenor.com/view/black-cat-heart-gif-15478685760485310159">Black Cat Sticker</a> from <a href="https://tenor.com/search/black-stickers">Black Stickers</a>
+                </div>
+            </div>
+            <p class="loading-text">Loading your surprise<span class="loading-dots"></span></p>
+            <p class="loading-subtitle">something special is waiting for you</p>
+        </div>
+    </div>
+
+    <!-- MAIN WEBSITE (TOGGLE & PASSWORD SCREEN) -->
+    <div id="app">
+        <div class="glow" id="glow"></div>
+
+        <!-- LOVE MODE CARD -->
+        <section class="card" id="card">
+            <div class="heart" id="heart">♡</div>
+            <h1 class="h1-title">Love mode</h1>
+            <button class="toggle" id="toggle" aria-label="Toggle love mode">
+                <span class="label" id="label">OFF</span>
+                <span class="knob" id="knob">♡</span>
+            </button>
+        </section>
+
+        <!-- PASSWORD SCREEN -->
+        <section class="password" id="passwordCard">
+            <div class="lock">🔒</div>
+            <h3>Our Special Date</h3>
+
+            <div class="pin-display" id="pinDisplay" aria-hidden="true">
+                <span class="pin-dot"></span>
+                <span class="pin-dot"></span>
+                <span class="pin-dot"></span>
+                <span class="pin-dot"></span>
+                <span class="pin-dot"></span>
+                <span class="pin-dot"></span>
+            </div>
+
+            <div class="keypad">
+                <button class="key" data-number="1">1</button>
+                <button class="key" data-number="2">2</button>
+                <button class="key" data-number="3">3</button>
+                <button class="key" data-number="4">4</button>
+                <button class="key" data-number="5">5</button>
+                <button class="key" data-number="6">6</button>
+                <button class="key" data-number="7">7</button>
+                <button class="key" data-number="8">8</button>
+                <button class="key" data-number="9">9</button>
+                <button class="key action" id="clearBtn">×</button>
+                <button class="key" data-number="0">0</button>
+                <button class="key action" id="backspaceBtn">←</button>
+            </div>
+
+            <div class="error" id="pinError"></div>
+        </section>
+    </div>
+
+    <!-- FULL BIRTHDAY CONTENT -->
+    <div id="mainContentWrapper">
+        <!-- FLOATING FLOWERS -->
+        <div id="petals" aria-hidden="true"></div>
+
+        <!-- MUSIC BUTTON -->
+        <button class="music-btn" id="musicBtn" aria-label="Play music">♫</button>
+
+        <!-- MUSIC -->
+        <audio id="music" loop preload="none">
+            <source src="asset/lagu1.mp3" type="audio/mpeg">
+        </audio>
+
+        <main>
+            <!-- HERO -->
+            <section class="section hero">
+                <p class="eyebrow">✿ WITH ALL MY HEART ✿</p>
+                <h1>
+                    Happy Birthday<br>
+                    <em>my beloved boyfriend,</em><br>
+                    <span id="personNameDisplay">Farrell</span>
+                </h1>
+                <p class="hero-love">With all my love, always ♡</p>
+                <p class="date">FOR THE ONE I LOVE MOST</p>
+                <div class="scroll-hint">scroll slowly ↓</div>
+            </section>
+
+            <!-- DIGITAL BOUQUET -->
+            <section class="section bouquet-section">
+                <p class="eyebrow">— MY FIRST GIFT —</p>
+                <h2>A Digital Bouquet</h2>
+                <p class="sub">Each flower holds a little message just for you</p>
+
+                <div class="bouquet" id="bouquet">
+                    <button class="flower f1" data-message="You make every ordinary day feel a little more beautiful. 🌸" aria-label="Flower message">🌸</button>
+                    <button class="flower f2" data-message="Your warmth is one of my favourite things about you. 🌻" aria-label="Flower message">🌻</button>
+                    <button class="flower f3" data-message="Thank you for being such a beautiful part of my life. 🌺" aria-label="Flower message">🌺</button>
+                    <button class="flower f4" data-message="No matter where life takes us, my heart will always choose you. 🌹" aria-label="Flower message">🌹</button>
+                    <button class="flower f5" data-message="You deserve every beautiful thing this world has to offer. 🌼" aria-label="Flower message">🌼</button>
+                    <button class="flower f6" data-message="I hope your life will always bloom with happiness, love, and beautiful memories. 🌷" aria-label="Flower message">🌷</button>
+
+                    <div class="stems">╲ │ ╱<br>╲ │ ╱<br>╲│╱</div>
+                    <div class="bouquet-wrap">♡</div>
+                </div>
+
+                <p class="touch-hint">Touch each flower to reveal its message 💕</p>
+
+                <div class="message-pop" id="messagePop">
+                    <button class="close-pop" id="closePop">×</button>
+                    <p id="messageText"></p>
+                </div>
+            </section>
+
+            <!-- LETTER -->
+            <section class="section letter-section">
+                <p class="eyebrow">— FROM MY HEART —</p>
+                <h2>A Letter For You</h2>
+                <article class="letter">
+                    <div class="letter-date">For Farrell ♡</div>
+                    <h3>My dearest Farrell,</h3>
+                    <p>On this most special day, I want you to know that every single day with you is a gift beyond measure. You bring light into every corner of my life — even on the darkest days.</p>
+                    <p>Your laughter is the most beautiful music I have ever heard. The way you see the world — with wonder and kindness — inspires me every day to become a better person.</p>
+                    <p>Thank you for being you — with all your uniqueness, the gentleness of your heart, and a spirit that never fades. You are the greatest gift life has ever given me.</p>
+                    <p>On this birthday of yours, I wish that all your dreams come true, all your prayers are answered, and all your happiness multiplied tenfold. You deserve every beautiful thing this world has to offer.</p>
+                    <p class="script">P.S. — I will always be here for you, today, tomorrow, and forever 🌸</p>
+                    <div class="signature">With all my love,<br><strong>Noa ♡</strong></div>
+                </article>
+            </section>
+
+            <!-- GRATITUDE JAR -->
+            <section class="section jar-section">
+                <p class="eyebrow">— FROM MY HEART TO YOURS —</p>
+                <h2>Reasons I'm Grateful to Know You</h2>
+                <p class="sub">Shake the jar and pick a little note</p>
+                
+                <div class="jar" id="jar">
+                    <div class="jar-lid"></div>
+                    <div class="notes"><i></i><i></i><i></i><i></i><i></i></div>
+                </div>
+                <button class="primary" id="shakeBtn">💙 Shake the Jar</button>
+                <div class="note-result" id="noteResult">Your little message will appear here ♡</div>
+            </section>
+
+            <!-- 10 THINGS I LOVE ABOUT YOU -->
+            <section class="section things-section">
+                <p class="eyebrow">— SPECIAL LIST —</p>
+                <h2>10 Things I Love About You</h2>
+                <div class="things-list">
+                    <article class="thing"><span class="thing-number">01</span><div class="thing-content"><h3>Your Warm Smile</h3><p>Sensasi hangat yang selalu bisa bikin hariku yang buruk jadi jauh lebih cerah.</p></div></article>
+                    <article class="thing"><span class="thing-number">02</span><div class="thing-content"><h3>Your Kindness</h3><p>Cara kamu memperlakukan orang-orang di sekitarmu dengan lembut dan tulus.</p></div></article>
+                    <article class="thing"><span class="thing-number">03</span><div class="thing-content"><h3>Your Voice</h3><p>Suara kamu yang selalu jadi tempat ternyaman untuk didengar kapan saja.</p></div></article>
+                    <article class="thing"><span class="thing-number">04</span><div class="thing-content"><h3>How Patient You Are</h3><p>Kecerdasan dan kesabaranmu menghadapiku dalam segala situasi.</p></div></article>
+                    <article class="thing"><span class="thing-number">05</span><div class="thing-content"><h3>Your Sense of Humor</h3><p>Candaanmu yang selalu berhasil bikin aku tertawa lepas tanpa beban.</p></div></article>
+                    <article class="thing"><span class="thing-number">06</span><div class="thing-content"><h3>Your Hard Work</h3><p>Semangat dan kerja kerasmu mengejar impian yang selalu bikin aku bangga.</p></div></article>
+                    <article class="thing"><span class="thing-number">07</span><div class="thing-content"><h3>Your Warm Hugs</h3><p>Dekapan hangat yang selalu bikin aku merasa aman dan terawat.</p></div></article>
+                    <article class="thing"><span class="thing-number">08</span><div class="thing-content"><h3>The Way You Listen</h3><p>Kamu selalu mendengarkan setiap ceritaku dengan penuh perhatian.</p></div></article>
+                    <article class="thing"><span class="thing-number">09</span><div class="thing-content"><h3>Your Eyes</h3><p>Tatapan mata yang selalu membuatku merasa dicintai setiap kali melihatnya.</p></div></article>
+                    <article class="thing"><span class="thing-number">10</span><div class="thing-content"><h3>Simply Being You</h3><p>Terima kasih sudah lahir ke dunia dan menjadi bagian terindah dalam hidupku.</p></div></article>
+                </div>
+            </section>
+        
+            <!-- PHOTO MEMORIES SECTION (10-20 POLAROID SLIDER) -->
+            <section class="section memories-section">
+                <p class="eyebrow">— A COLLECTION OF MEMORIES —</p>
+                <h2>Our Photo Memories</h2>
+                <p class="sub">Every picture holds a beautiful story (Geser ke samping untuk melihat lainnya 👉)</p>
+
+                <div class="polaroid-slider-container">
+                    <div class="polaroid-track">
+                        <!-- Polaroid 1 -->
+                        <div class="polaroid">
+                            <div class="polaroid-inner">
+                                <div class="photo-placeholder"><img src="asset/photo1.jpeg" alt="Foto 1"></div>
+                                <p class="polaroid-caption">Di bonceng Gojo maid</p>
+                            </div>
+                        </div>
+                        <!-- Polaroid 2 -->
+                        <div class="polaroid">
+                            <div class="polaroid-inner">
+                                <div class="photo-placeholder"><img src="asset/photo2.jpeg" alt="Foto 2"></div>
+                                <p class="polaroid-caption">Our first photobooth</p>
+                            </div>
+                        </div>
+                        <!-- Polaroid 3 -->
+                        <div class="polaroid">
+                            <div class="polaroid-inner">
+                                <div class="photo-placeholder"><img src="asset/photo3.jpeg" alt="Foto 3"></div>
+                                <p class="polaroid-caption">Swimm togetherrr</p>
+                            </div>
+                        </div>
+                        <!-- Polaroid 4 -->
+                        <div class="polaroid">
+                            <div class="polaroid-inner">
+                                <div class="photo-placeholder"><img src="asset/photo4.jpeg" alt="Foto 4"></div>
+                                <p class="polaroid-caption">Our first movie date</p>
+                            </div>
+                        </div>
+                        <!-- Polaroid 5 -->
+                        <div class="polaroid">
+                            <div class="polaroid-inner">
+                                <div class="photo-placeholder"><img src="asset/photo5.jpeg" alt="Foto 5"></div>
+                                <p class="polaroid-caption">Gacoan, cakep bgt km</p>
+                            </div>
+                        </div>
+                        <!-- Polaroid 6 -->
+                        <div class="polaroid">
+                            <div class="polaroid-inner">
+                                <div class="photo-placeholder"><img src="asset/photo6.jpeg" alt="Foto 6"></div>
+                                <p class="polaroid-caption">MY BABY BOYYYY</p>
+                            </div>
+                        </div>
+                        <!-- Polaroid 7 -->
+                        <div class="polaroid">
+                            <div class="polaroid-inner">
+                                <div class="photo-placeholder"><img src="asset/photo7.jpeg" alt="Foto 7"></div>
+                                <p class="polaroid-caption">HUUUHH???</p>
+                            </div>
+                        </div>
+                        <!-- Polaroid 8 -->
+                        <div class="polaroid">
+                            <div class="polaroid-inner">
+                                <div class="photo-placeholder"><img src="asset/photo8.jpeg" alt="Foto 8"></div>
+                                <p class="polaroid-caption">WKWKWK lucu banget pendek</p>
+                            </div>
+                        </div>
+                        <!-- Polaroid 9 -->
+                        <div class="polaroid">
+                            <div class="polaroid-inner">
+                                <div class="photo-placeholder"><img src="asset/photo9.jpeg" alt="Foto 9"></div>
+                                <p class="polaroid-caption">Nerd boy ceunah</p>
+                            </div>
+                        </div>
+                        <!-- Polaroid 10 -->
+                        <div class="polaroid">
+                            <div class="polaroid-inner">
+                                <div class="photo-placeholder"><img src="asset/photo10.jpeg" alt="Foto 10"></div>
+                                <p class="polaroid-caption">Our last pict</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+<!-- MUSIC PLAYLIST -->
+<section class="section playlist-section" id="playlist">
+    <p class="eyebrow">— A LITTLE MUSIC FOR YOU —</p>
+    <h2>Our Little Playlist</h2>
+    <p class="sub">Put on your earphones and enjoy these songs ♫</p>
+
+    <div class="playlist-player">
+        <div class="album-art" id="albumArt">
+            <div class="album-disc"></div>
+        </div>
+
+        <div class="now-playing">
+            <h3 id="playlistTitle">The Only Exception</h3>
+            <p id="playlistArtist">Paramore</p>
+        </div>
+
+        <div class="progress-area">
+            <input type="range" id="playlistProgress" min="0" max="100" value="0" aria-label="Music progress">
+            <div class="time-row">
+                <span id="playlistCurrent">0:00</span>
+                <span id="playlistDuration">0:00</span>
+            </div>
+        </div>
+
+        <div class="playlist-controls">
+            <button class="playlist-control" id="prevSong" aria-label="Previous song">⏮</button>
+            <button class="playlist-play" id="playlistPlay" aria-label="Play selected song">▶</button>
+            <button class="playlist-control" id="nextSong" aria-label="Next song">⏭</button>
+        </div>
+    </div>
+
+    <div class="song-list" id="songList">
+
+        <!-- SONG 1 -->
+        <button class="song active" data-index="0"
+                data-src="asset/the-only-exception.mp3"
+                data-title="The Only Exception"
+                data-artist="Paramore">
+            <span class="song-number">1</span>
+            <span class="song-info">
+                <strong>The Only Exception</strong>
+                <small>Paramore</small>
+            </span>
+            <span class="song-mark">♫</span>
+        </button>
+
+        <!-- SONG 2 -->
+        <button class="song" data-index="1"
+                data-src="asset/last-night-on-earth.mp3"
+                data-title="Last Night on Earth"
+                data-artist="Green Day">
+            <span class="song-number">2</span>
+            <span class="song-info">
+                <strong>Last Night on Earth</strong>
+                <small>Green Day</small>
+            </span>
+            <span class="song-mark">♫</span>
+        </button>
+
+        <!-- SONG 3 -->
+        <button class="song" data-index="2"
+                data-src="asset/moonlight.mp3"
+                data-title="Moonlight"
+                data-artist="Chase Atlantic">
+            <span class="song-number">3</span>
+            <span class="song-info">
+                <strong>Moonlight</strong>
+                <small>Chase Atlantic</small>
+            </span>
+            <span class="song-mark">♫</span>
+        </button>
+
+    </div>
+
+    <p class="playlist-note">All of these songs are just for you only &lt;3</p>
+</section>
+
+
+<!-- =====================================================
+                 FINAL WISH / ENDING SECTION
+            ===================================================== -->
+            <section class="section final-wish-section">
+                <div class="final-wish-content">
+                    <p class="final-wish-eyebrow">✿ WITH ALL MY HEART ✿</p>
+            
+                    <h2 class="final-wish-title">
+                        <span class="wish-line">May your life</span>
+                        <em>always be filled</em>
+                        <span class="wish-line">with flowers</span>
+                    </h2>
+            
+                    <p class="final-wish-description">
+                        Happy birthday. Semoga setiap harimu dipenuhi cinta, kebahagiaan, dan semua hal indah yang kamu pantas dapatkan.
+                    </p>
+            
+                    <p class="final-wish-signature">
+                        With love that never runs out
+                        <span class="final-wish-heart">♥</span>
+                    </p>
+                </div>
+            </section>
+
+</main>
+    </div>
+
+    <!-- TENOR SCRIPT -->
+    <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+
+    <!-- JAVASCRIPT GABUNGAN TERBARU -->
+    <script>
+        // 1. Loading Screen Script
+        window.addEventListener("load", function () {
+            setTimeout(function () {
+                document.getElementById("loading-screen").classList.add("hide");
+            }, 3000);
+        });
+
+        // 2. Main App Elements & PIN Unlock Logic
+        const toggle = document.getElementById('toggle');
+        const card = document.getElementById('card');
+        const glow = document.getElementById('glow');
+        const heart = document.getElementById('heart');
+        const label = document.getElementById('label');
+        const knob = document.getElementById('knob');
+        const passwordCard = document.getElementById('passwordCard');
+        const pinDisplay = document.getElementById('pinDisplay');
+        const pinError = document.getElementById('pinError');
+        const clearBtn = document.getElementById('clearBtn');
+        const backspaceBtn = document.getElementById('backspaceBtn');
+        const keys = document.querySelectorAll('.key[data-number]');
+        const mainContentWrapper = document.getElementById('mainContentWrapper');
+
+        let pinValue = '';
+
+        toggle.addEventListener('click', () => {
+            const on = !card.classList.contains('on');
+
+            card.classList.toggle('on', on);
+            toggle.classList.toggle('on', on);
+            glow.classList.toggle('on', on);
+
+            heart.textContent = on ? '♥' : '♡';
+            knob.textContent = on ? '♥' : '♡';
+            label.textContent = on ? 'ON' : 'OFF';
+
+            if (on) {
+                setTimeout(() => {
+                    passwordCard.classList.add('show');
+                }, 850);
+            } else {
+                passwordCard.classList.remove('show');
+                mainContentWrapper.classList.remove('show');
+                pinValue = '';
+                updateDots();
+                pinError.textContent = '';
+            }
+        });
+
+        function updateDots() {
+            [...pinDisplay.children].forEach((dot, index) => {
+                dot.classList.toggle('filled', index < pinValue.length);
+            });
+        }
+
+        keys.forEach(key => {
+            key.addEventListener('click', () => {
+                if (pinValue.length >= 6) return;
+
+                pinValue += key.dataset.number;
+                updateDots();
+                pinError.textContent = '';
+
+                if (pinValue.length === 6) {
+                    setTimeout(unlock, 250);
+                }
+            });
+        });
+
+        backspaceBtn.addEventListener('click', () => {
+            pinValue = pinValue.slice(0, -1);
+            updateDots();
+            pinError.textContent = '';
+        });
+
+        clearBtn.addEventListener('click', () => {
+            pinValue = '';
+            updateDots();
+            pinError.textContent = '';
+        });
+
+        function unlock() {
+            if (pinValue === '290626') {
+                pinError.textContent = 'Unlocked ♡';
+                pinError.style.color = '#69b2ff';
+                
+                setTimeout(() => {
+                    passwordCard.classList.remove('show');
+                    document.getElementById('app').style.display = 'none';
+                    mainContentWrapper.classList.add('show');
+                    burst(); // Panggil efek selebrasi setelah terbuka
+                }, 600);
+            } else {
+                pinError.textContent = 'Wrong password. Try again ♡';
+                pinValue = '';
+                updateDots();
+            }
+        }
+
+        // 3. SCRIPT TAMBAHAN TERBARU ANDA
+        /* =====================================================
+           HELPER
+        ===================================================== */
+        const $ = (selector) => {
+            return document.querySelector(selector);
+        };
+
+        const $$ = (selector) => {
+            return [...document.querySelectorAll(selector)];
+        };
+
+        /* =====================================================
+           NAME
+        ===================================================== */
+        const PERSON_NAME = "Farrell";
+        const nameDisplay = $("#personNameDisplay");
+        if (nameDisplay) nameDisplay.textContent = PERSON_NAME;
+
+        /* =====================================================
+           FLOATING FLOWERS
+        ===================================================== */
+        const petalsList = [
+            "🌸",
+            "🌼",
+            "🌷",
+            "🌺",
+            "✨",
+            "♡"
+        ];
+
+        function createPetal() {
+            const element = document.createElement("span");
+            element.className = "petal";
+            element.textContent = petalsList[Math.floor(Math.random() * petalsList.length)];
+            element.style.left = Math.random() * 100 + "vw";
+            element.style.fontSize = 12 + Math.random() * 18 + "px";
+            element.style.setProperty("--x", Math.random() * 180 - 90 + "px");
+            element.style.animationDuration = 7 + Math.random() * 7 + "s";
+            
+            const petalsContainer = $("#petals");
+            if (petalsContainer) {
+                petalsContainer.appendChild(element);
+                setTimeout(() => {
+                    element.remove();
+                }, 15000);
+            }
+        }
+
+        setInterval(createPetal, 900);
+
+        for (let i = 0; i < 8; i++) {
+            setTimeout(createPetal, i * 300);
+        }
+
+        /* =====================================================
+           MUSIC
+        ===================================================== */
+        const audio = $("#music");
+        const musicBtn = $("#musicBtn");
+
+        musicBtn.addEventListener("click", async () => {
+            if (audio.paused) {
+                try {
+                    await audio.play();
+                    musicBtn.textContent = "❚❚";
+                } catch (error) {
+                    alert("Pastikan file lagu.mp3 sudah ada di folder assets.");
+                }
+            } else {
+                audio.pause();
+                musicBtn.textContent = "♫";
+            }
+        });
+
+        /* =====================================================
+           DIGITAL BOUQUET
+        ===================================================== */
+        const popup = $("#messagePop");
+        const messageText = $("#messageText");
+
+        $$(".flower").forEach((flower) => {
+            flower.addEventListener("click", () => {
+                messageText.textContent = flower.dataset.message;
+                popup.classList.add("show");
+            });
+        });
+
+        /* =====================================================
+           CLOSE FLOWER MESSAGE
+        ===================================================== */
+        $("#closePop").addEventListener("click", () => {
+            popup.classList.remove("show");
+        });
+
+        popup.addEventListener("click", (event) => {
+            if (event.target === popup) {
+                popup.classList.remove("show");
+            }
+        });
+
+        /* =====================================================
+           GRATITUDE JAR
+        ===================================================== */
+        const reasons = [
+            "Your spirit in the face of challenges inspires me every single day.",
+            "You make ordinary moments feel like beautiful memories.",
+            "Your kindness makes the world around you feel warmer.",
+            "Your presence makes even the hardest days feel a little easier.",
+            "You always remind me that there is something beautiful to look forward to.",
+            "You make me feel loved in ways words can never fully explain.",
+            "Knowing you has made my life more beautiful than I ever expected.",
+            "You are one of the greatest gifts life has ever given me."
+        ];
+
+        $("#shakeBtn").addEventListener("click", () => {
+            const jar = $("#jar");
+            jar.classList.remove("shake");
+            void jar.offsetWidth;
+            jar.classList.add("shake");
+
+            const randomReason = reasons[Math.floor(Math.random() * reasons.length)];
+            $("#noteResult").textContent = randomReason;
+        });
+
+
+        /* =====================================================
+           BLUE PLAYLIST
+        ===================================================== */
+        const playlistAudio = document.createElement("audio");
+        playlistAudio.id = "playlistAudio";
+        playlistAudio.preload = "metadata";
+        document.body.appendChild(playlistAudio);
+
+        const playlistPlayer = document.querySelector(".playlist-player");
+        const playlistSongs = [...document.querySelectorAll(".playlist-section .song")];
+        const playlistPlay = $("#playlistPlay");
+        const prevSong = $("#prevSong");
+        const nextSong = $("#nextSong");
+        const playlistProgress = $("#playlistProgress");
+        const playlistCurrent = $("#playlistCurrent");
+        const playlistDuration = $("#playlistDuration");
+        const playlistTitle = $("#playlistTitle");
+        const playlistArtist = $("#playlistArtist");
+
+        let playlistIndex = 0;
+
+        function formatTime(seconds) {
+            if (!Number.isFinite(seconds)) return "0:00";
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60).toString().padStart(2, "0");
+            return `${mins}:${secs}`;
+        }
+
+        function selectPlaylistSong(index, autoplay = false) {
+            playlistIndex = (index + playlistSongs.length) % playlistSongs.length;
+            const song = playlistSongs[playlistIndex];
+
+            playlistSongs.forEach((item, i) => item.classList.toggle("active", i === playlistIndex));
+
+            playlistTitle.textContent = song.dataset.title;
+            playlistArtist.textContent = song.dataset.artist;
+            playlistProgress.value = 0;
+            playlistCurrent.textContent = "0:00";
+            playlistDuration.textContent = "0:00";
+
+            playlistAudio.src = song.dataset.src;
+            playlistAudio.load();
+
+            if (autoplay) {
+                playlistAudio.play().then(() => {
+                    playlistPlay.textContent = "❚❚";
+                    playlistPlayer.classList.add("playing");
+                }).catch(() => {
+                    playlistPlay.textContent = "▶";
+                    playlistPlayer.classList.remove("playing");
+                    alert("File musik belum ditemukan: " + song.dataset.src);
+                });
+            } else {
+                playlistPlay.textContent = "▶";
+                playlistPlayer.classList.remove("playing");
+            }
+        }
+
+        playlistSongs.forEach((song, index) => {
+            song.addEventListener("click", () => selectPlaylistSong(index, true));
+        });
+
+        playlistPlay.addEventListener("click", () => {
+            if (playlistAudio.paused) {
+                playlistAudio.play().then(() => {
+                    playlistPlay.textContent = "❚❚";
+                    playlistPlayer.classList.add("playing");
+                }).catch(() => {
+                    alert("File musik belum ditemukan: " + playlistSongs[playlistIndex].dataset.src);
+                });
+            } else {
+                playlistAudio.pause();
+                playlistPlay.textContent = "▶";
+                playlistPlayer.classList.remove("playing");
+            }
+        });
+
+        prevSong.addEventListener("click", () => {
+            selectPlaylistSong(playlistIndex - 1, true);
+        });
+
+        nextSong.addEventListener("click", () => {
+            selectPlaylistSong(playlistIndex + 1, true);
+        });
+
+        playlistAudio.addEventListener("loadedmetadata", () => {
+            playlistDuration.textContent = formatTime(playlistAudio.duration);
+        });
+
+        playlistAudio.addEventListener("timeupdate", () => {
+            if (playlistAudio.duration) {
+                playlistProgress.value = (playlistAudio.currentTime / playlistAudio.duration) * 100;
+            }
+            playlistCurrent.textContent = formatTime(playlistAudio.currentTime);
+        });
+
+        playlistProgress.addEventListener("input", () => {
+            if (playlistAudio.duration) {
+                playlistAudio.currentTime = (playlistProgress.value / 100) * playlistAudio.duration;
+            }
+        });
+
+        playlistAudio.addEventListener("ended", () => {
+            selectPlaylistSong(playlistIndex + 1, true);
+        });
+
+        selectPlaylistSong(0, false);
+
+        /* =====================================================
+           PLAYLIST
+        ===================================================== */
+        const songs = $$(".song");
+        songs.forEach((song) => {
+            song.addEventListener("click", async () => {
+                songs.forEach((item) => {
+                    item.classList.remove("active");
+                });
+
+                song.classList.add("active");
+                const source = song.dataset.src;
+                audio.src = source;
+
+                try {
+                    await audio.play();
+                    musicBtn.textContent = "❚❚";
+                } catch (error) {
+                    alert("File musik belum ditemukan:\n" + source);
+                }
+            });
+        });
+
+        /* =====================================================
+           CELEBRATION EFFECT
+        ===================================================== */
+        function burst() {
+            for (let i = 0; i < 30; i++) {
+                const element = document.createElement("span");
+                element.className = "petal";
+                element.textContent = ["💗", "🌸", "✨", "🌺", "🌷", "💕"][Math.floor(Math.random() * 6)];
+                element.style.left = "50%";
+                element.style.top = "50%";
+                element.style.fontSize = 14 + Math.random() * 20 + "px";
+                element.style.setProperty("--x", Math.random() * 500 - 250 + "px");
+                element.style.animationDuration = 1.5 + Math.random() * 2 + "s";
+                
+                const petalsContainer = $("#petals");
+                if (petalsContainer) {
+                    petalsContainer.appendChild(element);
+                    setTimeout(() => {
+                        element.remove();
+                    }, 4000);
+                }
+            }
+        }
+    </script>
+
+
+
+</body>
+</html>
